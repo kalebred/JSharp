@@ -25,27 +25,27 @@ public class JSharp : Task
             catch (ArgumentException argumentException)
             {
                 Log.LogError(subcategory: null,
-                    errorCode: "JSH0001",
+                    errorCode: "JSHRP0001",
                     helpKeyword: null,
                     file: null,
                     lineNumber: 0,
                     columnNumber: 0,
                     endColumnNumber: 0,
                     endLineNumber: 0,
-                    message: "Empty AssemblyLocation property.");
+                    message: ErrorCodes.JSHRP0001);
                 return false;
             }
             catch (FileNotFoundException notFoundException)
             {
                 Log.LogError(subcategory: null,
-                    errorCode: "JSH0002",
+                    errorCode: "JSHRP0002",
                     helpKeyword: null,
                     file: null,
                     lineNumber: 0,
                     columnNumber: 0,
                     endColumnNumber: 0,
                     endLineNumber: 0,
-                    message: "The specified assembly {0} could not be found on the disk.",
+                    message: ErrorCodes.JSHRP0002,
                     messageArgs: AssemblyLocation);
             }
         }
