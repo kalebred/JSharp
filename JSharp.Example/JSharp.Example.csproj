@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net7.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <UsingTask TaskName="JSharp"
+               AssemblyFile="D:\GitHub\JavaSharp\JSharp\JSharp\bin\Debug\netstandard2.0\JSharp.dll"
+               TaskFactory="JSharp.JSharp"/>
+
+    <Target Name="Test" AfterTargets="Compile">
+        <Message Text="My Assemblies" Importance="high"/>
+        <Message Text="$(OutputPath)$(AssemblyName).dll" Importance="high"/>
+        <Message Text="End My Assemblies" Importance="high"/>
+        <JSharp AssemblyLocation="$(OutputPath)$(AssemblyName).dll"/>
+    </Target>
+
+    <ItemGroup>
+      <ProjectReference Include="..\JSharp\JSharp.csproj" />
+    </ItemGroup>
+
+</Project>
