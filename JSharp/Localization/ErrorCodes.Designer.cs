@@ -69,11 +69,20 @@ namespace JSharp {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The specified assembly &quot;{0}&quot; was not found on the disk..
+        ///   Looks up a localized string similar to The &quot;AssemblyLocation&quot; property must be an absolute path..
         /// </summary>
         internal static string JSHRP0002 {
             get {
                 return ResourceManager.GetString("JSHRP0002", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The specified assembly &quot;{0}&quot; was not found on the disk..
+        /// </summary>
+        internal static string JSHRP0003 {
+            get {
+                return ResourceManager.GetString("JSHRP0003", resourceCulture);
             }
         }
     }

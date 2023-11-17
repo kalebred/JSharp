@@ -2,33 +2,35 @@
 
 internal class JClassProcessor
 {
+    internal byte[] ClassBytes { get; private set; }
+    
     internal JClassProcessor(Type type)
     {
-        
+        ClassBytes = GetClassBytes();
     }
-    
-    internal byte[][] GetClassBytes()
+
+    private byte[] GetClassBytes()
     {
-        var bytecode = new HashSet<byte[]>();
+        var bytecode = new List<byte>();
         
         // Magic Number
-        bytecode.Add(new[] {(byte) 0xCA, (byte) 0xFE, (byte) 0xBA, (byte) 0xBE});
+        bytecode.AddRange(new []{(byte) 0xCA, (byte) 0xFE, (byte) 0xBA, (byte) 0xBE});
         
         // Minor Version
-        bytecode.Add(new[] {(byte) 0x00});
+        bytecode.Add(0x00);
         
         // Major Version
-        bytecode.Add(new[] {(byte) 0x41});
+        bytecode.Add(0x41);
         
         // Constant Pool Count
         var constantPool = GenerateConstantPool();
-        bytecode.Add(new[] {(byte) constantPool.Length});
+        bytecode.Add((byte) constantPool.Length);
         
         // Constant Pool
-        bytecode.Add(constantPool);
+        bytecode.AddRange(constantPool);
         
         // Access Flags
-        bytecode.Add(new[] {(byte) (0x0001 | 0x0020)});
+        bytecode.Add(0x0001 | 0x0020);
         
         // This Class Identifier
         // Super Class Identifier

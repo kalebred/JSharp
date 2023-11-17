@@ -18,10 +18,13 @@
     <resheader name="writer">
         <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
     </resheader>
-    <data name="JSHRP0002" xml:space="preserve">
-        <value>The specified assembly "{0}" was not found on the disk.</value>
-    </data>
     <data name="JSHRP0001" xml:space="preserve">
         <value>The "AssemblyLocation" property is empty.</value>
+    </data>
+    <data name="JSHRP0002" xml:space="preserve">
+        <value>The "AssemblyLocation" property must be an absolute path.</value>
+    </data>
+    <data name="JSHRP0003" xml:space="preserve">
+        <value>The specified assembly "{0}" was not found on the disk.</value>
     </data>
 </root>
