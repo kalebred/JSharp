@@ -1,8 +1,5 @@
-﻿using JSharp.Attributes;
+﻿namespace JSharp.Example.Commands;
 
-namespace JSharp.Example.Commands;
-
-[JClass]
 public class BaseCommand
 {
     

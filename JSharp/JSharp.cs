@@ -1,5 +1,4 @@
 ﻿using System.Reflection;
-using JSharp.Attributes;
 using Microsoft.Build.Framework;
 using Microsoft.Build.Utilities;
 
