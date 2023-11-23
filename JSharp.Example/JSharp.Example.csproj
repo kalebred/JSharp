@@ -1,18 +1,14 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <OutputType>Exe</OutputType>
         <TargetFramework>net7.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
-    <UsingTask TaskName="JSharp"
-               AssemblyFile="D:\GitHub\JavaSharp\JSharp\JSharp\bin\Debug\netstandard2.0\JSharp.dll"/>
-
-    <Target Name="Test" AfterTargets="Compile">
-        <JSharp AssemblyLocation="D:\GitHub\JavaSharp\JSharp\JSharp.Example\bin\Debug\net7.0\JSharp.Example.dll"/>
-    </Target>
+    <ItemGroup>
+        <PackageReference Include="JSharp" Version="0.0.0-dev"/>
+    </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\JSharp\JSharp.csproj" />
