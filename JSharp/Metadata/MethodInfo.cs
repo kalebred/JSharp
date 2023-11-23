@@ -1,6 +1,6 @@
 using JSharp.Class.Attributes;
 
-namespace JSharp.Class;
+namespace JSharp.Metadata;
 
 public struct MethodInfo
 {

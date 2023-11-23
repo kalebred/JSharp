@@ -2,34 +2,68 @@
 
     <PropertyGroup>
         <TargetFramework>netstandard2.1</TargetFramework>
+        <Version>0.0.1-nightly.20231122.1</Version>
+        <Title>JSharp</Title>
+        <Authors>Kaleb Redpath</Authors>
+        <Description>Compile a C# assembly into a Java .jar file!</Description>
+        <GenerateDependencyFile>true</GenerateDependencyFile>
+        <TargetsForTfmSpecificBuildOuput>$(TargetsForTfmSpecificBuildOuput);CopyProjectReferencesToPackage</TargetsForTfmSpecificBuildOuput>
+        <BuildOutputTargetFolder>tasks</BuildOutputTargetFolder>
+        <NoWarn>NU5100</NoWarn>
+        <DebugType>embedded</DebugType>
+        <IsPackable>true</IsPackable>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <RootNamespace>JSharp</RootNamespace>
         <LangVersion>latest</LangVersion>
+        <RepositoryUrl>https://github.com/kalebred/JSharp</RepositoryUrl>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     </PropertyGroup>
-
     
     <ItemGroup>
-        <PackageReference Include="Microsoft.Build.Utilities.Core" Version="17.8.3" />
+        <PackageReference Include="Microsoft.Build.Utilities.Core" Version="17.8.3"/>
     </ItemGroup>
-    
+
     <ItemGroup>
         <Using Remove="System.Threading"/>
         <Using Remove="System.Threading.Tasks"/>
     </ItemGroup>
-    
+
     <ItemGroup>
-      <EmbeddedResource Update="Localization\ErrorCodes.resx">
-        <Generator>ResXFileCodeGenerator</Generator>
-        <LastGenOutput>ErrorCodes.Designer.cs</LastGenOutput>
-      </EmbeddedResource>
+        <EmbeddedResource Update="Localization\ErrorCodes.resx">
+            <Generator>ResXFileCodeGenerator</Generator>
+            <LastGenOutput>ErrorCodes.Designer.cs</LastGenOutput>
+        </EmbeddedResource>
+        <EmbeddedResource Remove="bin\**"/>
     </ItemGroup>
-    
+
     <ItemGroup>
-      <Compile Update="Localization\ErrorCodes.Designer.cs">
-        <DesignTime>True</DesignTime>
-        <AutoGen>True</AutoGen>
-        <DependentUpon>ErrorCodes.resx</DependentUpon>
-      </Compile>
+        <Compile Update="Localization\ErrorCodes.Designer.cs">
+            <DesignTime>True</DesignTime>
+            <AutoGen>True</AutoGen>
+            <DependentUpon>ErrorCodes.resx</DependentUpon>
+        </Compile>
+        <Compile Remove="bin\**"/>
     </ItemGroup>
+
+    <ItemGroup>
+        <None Remove="bin\**"/>
+    </ItemGroup>
+
+    <Target Name="CopyReferencesToPackage" DependsOnTargets="ResolveReferences">
+        <ItemGroup>
+            <BuildOutputInPackage Include="@(ReferenceCopyLocalPaths)"
+                                  TargetPath="%(ReferenceCopyLocalPaths.DestinationSubPath)"/>
+        </ItemGroup>
+    </Target>
+
+    <Target Name="AddBuildDependencyFileToBuiltProjectOutputGroupOutput"
+            BeforeTargets="BuiltProjectOutputGroup"
+            Condition="'$(GenerateDependencyFile)' == 'true'">
+        <ItemGroup>
+            <BuiltProjectOutputGroupOutput Include="$(ProjectDepsFilePath)"
+                                           TargetPath="$(ProjectDepsFileName)"
+                                           FinalOutputPath="$(ProjectDepsFilePath)"/>
+        </ItemGroup>
+    </Target>
 </Project>
