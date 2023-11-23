@@ -1,53 +1,61 @@
-﻿namespace JSharp.Processors;
+using JSharp.Pool;
+
+namespace JSharp.Processors;
 
 internal class JClassProcessor
 {
-    internal byte[] ClassBytes { get; private set; }
-    
-    internal JClassProcessor(Type type)
+    private readonly Type _type;
+    private readonly ConstantPool _constantPool;
+
+    public JClassProcessor(Type jClass)
     {
-        ClassBytes = GetClassBytes();
+        _type = jClass;
+        _constantPool = GenerateConstantPool();
     }
 
-    private byte[] GetClassBytes()
-    {
-        var bytecode = new List<byte>();
-        
-        // Magic Number
-        bytecode.AddRange(new []{(byte) 0xCA, (byte) 0xFE, (byte) 0xBA, (byte) 0xBE});
-        
-        // Minor Version
-        bytecode.Add(0x00);
-        
-        // Major Version
-        bytecode.Add(0x41);
-        
-        // Constant Pool Count
-        var constantPool = GenerateConstantPool();
-        bytecode.Add((byte) constantPool.Length);
-        
-        // Constant Pool
-        bytecode.AddRange(constantPool);
-        
-        // Access Flags
-        bytecode.Add(0x0001 | 0x0020);
-        
-        // This Class Identifier
-        // Super Class Identifier
-        // Interface Count
-        // Interface Table
-        // Field Count
-        // Field Table
-        // Method Count
-        // Method Table
-        // Attribute Count
-        // Attribute Table
+    internal IEnumerable<byte> GenerateBytecode()
+     {
+          var bytecode = new List<byte>
+          {
+               // Magic Number
+               0xCA, 0xFE, 0xBA, 0xBE,
+               // Minor Version
+               0x00, 0x00,
+               // Major Version
+               0x41,
+               // Constant Pool Count
+               (byte) (_constantPool.Count + 1),
+          };
 
-        return bytecode.ToArray();
-    }
+          // Constant Pool
+          bytecode.AddRange(_constantPool.GetBytes());
 
-    private byte[] GenerateConstantPool()
-    {
-        return new byte[] {};
-    }
+          // Access Flags
+
+          // This Class
+
+          // Super Class
+
+          // Interfaces Count
+
+          // Interfaces
+
+          // Fields
+
+          // Methods Count
+
+          // Methods
+
+          // Attributes Count
+
+          // Attributes
+
+          return bytecode.ToArray();
+     }
+
+     private ConstantPool GenerateConstantPool()
+     {
+         var constantPool = new ConstantPool(_type);
+         return constantPool;
+     }
 }

@@ -8,7 +8,4 @@
                 | AttributeTargets.Method
                 | AttributeTargets.Property
                 | AttributeTargets.Struct)]
-public class JExcludeAttribute : Attribute
-{
-    
-}
+public class JExcludeAttribute : Attribute { }

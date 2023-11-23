@@ -1,6 +1,6 @@
-﻿namespace JSharp.Pool;
+namespace JSharp.Pool;
 
-public enum ConstantPoolType
+internal enum ConstantPoolType
 {
     String = 1,
     Integer = 3,
@@ -9,14 +9,14 @@ public enum ConstantPoolType
     Double = 6,
     Class = 7,
     StringRef = 8,
-    Field = 9,
-    Method = 10,
-    Interface = 11,
-    NameType = 12,
+    FieldRef = 9,
+    MethodRef = 10,
+    InterfaceMethodRef = 11,
+    NameAndType = 12,
     MethodHandle = 15,
     MethodType = 16,
     Dynamic = 17,
     InvokeDynamic = 18,
     Module = 19,
-    Package = 20
+    Package = 20,
 }
