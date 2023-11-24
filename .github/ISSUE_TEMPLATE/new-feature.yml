@@ -1,0 +1,26 @@
+name: New Feature
+description: Open an issue for a new feature discussed in a discussion post
+body:
+  - type: input
+    attributes:
+      label: Related Discussion
+      description: What discussion post is this feature related to?
+      placeholder: "Example: #87"
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Synopsis
+      description: Provide a brief summary of the new feature
+    validations:
+      required: true
+  - type: input
+    attributes:
+      label: Related Area
+      description: What area of JSharp is this feature related to?
+      placeholder: "Example: Documentation, Unit Tests"
+  - type: checkboxes
+    attributes:
+      label: Meta Information
+      options:
+        - label: OP is willing to work on this feature
