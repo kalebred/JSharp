@@ -1,0 +1,57 @@
+title: "[BUG] "
+body:
+  - type: checkboxes
+    attributes:
+      label: Pre-Report Checklist
+      description: Please ensure that you have completed the following checklist **before** opening this bug report!
+      options:
+        - label: I have looked for a duplicate bug report
+          required: true
+        - label: I have not received an error code for my issue (please go to the support discussions for issues with an error code!)
+          required: true
+
+  - type: input
+    attributes:
+      label: JSharp Version
+      description: Please enter the version of JSharp you are experiencing this issue on! If you built JSharp from source, provide the commit hash!
+      plaeholder: "0.2.4-beta.3"
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: Description
+      description: Please give a brief description of the problem.
+      placeholder: |
+        Example: The compiled .jar file is missing some of my C# classes
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: Steps for Reproduction
+      description: |
+        Please provide a list of steps on how to reproduce the issue you're having
+        ##### Tip: Be as detailed as possible! This makes it easier for us to quickly identify the issue!
+      placeholder: |
+        1. Create a new project with JSharp
+        2. Make a new class "TestUIClass" in the folder "Tests/UI"
+        ...
+    validations:
+        required: true
+
+  - type: textarea
+    attributes:
+      label: Extra Info
+      description: |
+        Is there anything else you think we should know about your issue that wasn't covered above? Let us know here
+    validations:
+      required: false
+
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for taking the time to fill out this bug report! We greatly appreciate it and will review this as soon as we can!
+        
+      
+        
