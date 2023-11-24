@@ -1,0 +1,23 @@
+name: Bug Report
+description: Open a new bug report from a discussion
+body:
+  - type: input
+    attributes:
+      label: Related Discussion
+      description: What discussion is this issue derived from
+      placeholder: "Example: #6"
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Synopsis
+      description: Provide a synopsis of the issue
+    validations:
+      required: true
+  - type: input
+    attributes:
+      label: Related Area
+      description: What area of JSharp is this issue related to?
+      placeholder: Example: CI/CD, Unit Tests, etc.
+    validations:
+      required: true
