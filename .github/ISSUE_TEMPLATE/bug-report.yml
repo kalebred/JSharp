@@ -18,6 +18,6 @@ body:
     attributes:
       label: Related Area
       description: What area of JSharp is this issue related to?
-      placeholder: Example: CI/CD, Unit Tests, etc.
+      placeholder: "Example: CI/CD, Unit Tests, etc."
     validations:
       required: true
