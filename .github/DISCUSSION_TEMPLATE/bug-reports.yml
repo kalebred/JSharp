@@ -14,7 +14,7 @@ body:
     attributes:
       label: JSharp Version
       description: Please enter the version of JSharp you are experiencing this issue on! If you built JSharp from source, provide the commit hash!
-      plaeholder: "0.2.4-beta.3"
+      placeholder: "0.2.4-beta.3"
     validations:
       required: true
 
