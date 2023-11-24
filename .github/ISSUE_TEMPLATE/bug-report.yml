@@ -4,14 +4,14 @@ body:
   - type: input
     attributes:
       label: Related Discussion
-      description: What discussion is this issue derived from
+      description: What discussion post is this issue related to?
       placeholder: "Example: #6"
     validations:
       required: true
   - type: textarea
     attributes:
       label: Synopsis
-      description: Provide a synopsis of the issue
+      description: Provide a brief summary of the issue
     validations:
       required: true
   - type: input
@@ -21,3 +21,8 @@ body:
       placeholder: "Example: CI/CD, Unit Tests, etc."
     validations:
       required: true
+  - type: checkboxes
+    attributes:
+      label: Meta Information
+      options:
+        - label: OP is willing to work on this feature

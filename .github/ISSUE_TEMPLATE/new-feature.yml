@@ -19,6 +19,8 @@ body:
       label: Related Area
       description: What area of JSharp is this feature related to?
       placeholder: "Example: Documentation, Unit Tests"
+    validations:
+      required: true
   - type: checkboxes
     attributes:
       label: Meta Information
